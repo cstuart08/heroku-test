@@ -18,6 +18,16 @@ app.get('/something', function(req, res) {
   res.sendStatus(400)
 })
 
+app.get('/error', function(req, res) {
+  rollbar.error('Uh oh, this is a custom error.')
+  res.sendStatus(400)
+})
+
+app.get('/warning', function(req, res) {
+  rollbar.warning('Someone hit the warning page...')
+  res.sendStatus(200)
+})
+
 app.use(rollbar.errorHandler())
 
 const port = process.env.PORT || 4005
