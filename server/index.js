@@ -28,6 +28,10 @@ app.get('/warning', function(req, res) {
   res.sendStatus(200)
 })
 
+app.get('/crash', function(req, res) {
+  process.exit()
+})
+
 app.use(rollbar.errorHandler())
 
 const port = process.env.PORT || 4005
