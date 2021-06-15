@@ -29,7 +29,8 @@ app.get('/warning', function(req, res) {
 })
 
 app.get('/crash', function(req, res) {
-  process.exit()
+  rollbar.critical('WHOA! DANGER')
+  res.sendStatus(500)
 })
 
 app.use(rollbar.errorHandler())
